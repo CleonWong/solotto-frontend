@@ -1,0 +1,127 @@
+// General
+// -------
+
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+// To inherit that html {box-sizing: border-box} to all elements.
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0;
+  padding: 0;
+  font-family: "Fira Code", monospace;
+  font-size: $body-fontSize;
+  font-weight: 300;
+  line-height: 1.3;
+  color: $black;
+  overflow-x: hidden; // To remove the horizontal scrollbar.
+
+  &.noscroll {
+    overflow: hidden;
+  }
+}
+
+// ========================
+
+// Text
+// ----
+
+h1 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 4.625rem;
+  text-align: center;
+  margin: 0;
+}
+
+p {
+  text-align: center;
+  margin: 0;
+}
+
+.bodyStrong {
+  font-weight: 600;
+}
+// ========================
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  max-width: 25rem;
+  min-width: 18rem;
+
+  @include breakpoint-down(small) {
+    margin: 0rem 2rem;
+  }
+}
+
+.logo {
+  width: 4rem;
+  margin-bottom: 3rem;
+}
+
+button,
+.button {
+  align-self: stretch;
+  margin: 0;
+  border: 0px;
+  border-radius: 1rem;
+  background-color: $black;
+  cursor: pointer;
+  font-family: "Fira Code", monospace;
+  font-size: $button-fontSize;
+  font-weight: 600;
+  padding: 1rem 1.5rem;
+  transition: all 150ms ease-in-out;
+
+  &__active {
+    flex-grow: 0;
+    color: $white;
+
+    &:hover {
+      background-color: $green;
+      color: $black;
+    }
+  }
+
+  &__disabled {
+    color: $grey;
+    background-color: $lightGrey;
+
+    &:hover {
+      cursor: default;
+    }
+  }
+}
+
+// ========================
+
+.content {
+  align-self: stretch;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 3rem 0rem;
+
+  &__item {
+    margin-bottom: 1rem;
+  }
+}
