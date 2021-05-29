@@ -16,8 +16,7 @@ async function connectWallet() {
     return wallet
 }
 
-async function solottoProgram() {
-    const wallet = await connectWallet();
+async function solottoProgram(wallet) {
     const provider = new anchor.Provider(
         new Connection(CLUSTER),
         wallet,
@@ -28,4 +27,7 @@ async function solottoProgram() {
     return new anchor.Program(idl, programId);
 }
 
-export default solottoProgram;
+export {
+    connectWallet,
+    solottoProgram
+};

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import solottoProgram from "./interface/solotto";
+import * as anchor from "@project-serum/anchor";
+
+import { connectWallet, solottoProgram } from "./interface/solotto";
 
 // ----------
 
@@ -9,10 +11,18 @@ class BuyButton extends Component {
   }
 
   async buyTicket() {
-    let solotto = await solottoProgram();
-    // note: you will need to have initialized the state account with solotto.state.rpc.new() separately
-    // else this will return "no such account"
-    console.log(await solotto.state());
+    const wallet = await connectWallet();
+    let solotto = await solottoProgram(wallet);
+    const stateAddress = await solotto.state.address();
+    const txHash = await solotto.state.rpc.buyTicket({
+      accounts: {
+        buyer: wallet.publicKey,
+        state: stateAddress,
+        systemProg: anchor.web3.SystemProgram.programId
+      }
+    })
+    .catch(console.log);
+    alert(`Your transaction hash: ${txHash}`);
   }
 }
 
