@@ -11,12 +11,10 @@ const Status = (props) => {
 };
 
 const NumPlayers = (props) => {
-  const MAX_PLAYERS = 32;
-
   return (
     <div className="content__item">
       <p className="bodyStrong">Number of players in this game:</p>
-      <p>{props.numPlayers} / {MAX_PLAYERS}</p>
+      <p>{props.numPlayers} / {props.maxPlayers}</p>
     </div>
   );
 };
@@ -43,12 +41,13 @@ class Content extends Component {
 
     const gameState = state ? gameStateToDisplay(state.gameState) : "fetching...";
     const numPlayers = state ? state.nPlayers : 0;
+    const maxPlayers = state ? state.players.length : 0;
     const hash = (state && state.gameState.ongoing) ? hashToDisplay(state.commit).substr(0, 8) : "fetching...";
 
     return (
       <div className="content">
         <Status gameState={gameState}/>
-        <NumPlayers numPlayers={numPlayers}/>
+        <NumPlayers numPlayers={numPlayers} maxPlayers={maxPlayers}/>
         <Commit hash={hash}/>
       </div>
     );

@@ -28,6 +28,14 @@
             }
           },
           {
+            "name": "seed",
+            "type": {
+              "option": {
+                "defined": "Seed"
+              }
+            }
+          },
+          {
             "name": "authority",
             "type": "publicKey"
           },
@@ -36,7 +44,7 @@
             "type": {
               "array": [
                 "publicKey",
-                32
+                31
               ]
             }
           }
@@ -51,6 +59,22 @@
             "name": "authority",
             "isMut": false,
             "isSigner": true
+          }
+        ],
+        "args": []
+      },
+      {
+        "name": "del",
+        "accounts": [
+          {
+            "name": "authority",
+            "isMut": false,
+            "isSigner": true
+          },
+          {
+            "name": "state",
+            "isMut": false,
+            "isSigner": false
           }
         ],
         "args": []
@@ -158,41 +182,52 @@
           }
         ]
       }
+    },
+    {
+      "name": "Seed",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "val",
+            "type": "u64"
+          },
+          {
+            "name": "salt",
+            "type": "string"
+          }
+        ]
+      }
     }
   ],
   "errors": [
     {
       "code": 100,
-      "name": "NotEnoughPlayers",
-      "msg": "Not enough players in the pool"
-    },
-    {
-      "code": 101,
       "name": "GameOngoing",
       "msg": "Game already started"
     },
     {
-      "code": 102,
+      "code": 101,
       "name": "NoGameOngoing",
       "msg": "No game ongoing"
     },
     {
-      "code": 103,
+      "code": 102,
       "name": "MaxPlayers",
       "msg": "Max players reached"
     },
     {
-      "code": 104,
+      "code": 103,
       "name": "WrongWinningSeed",
       "msg": "Winning seed is different from the one commited"
     },
     {
-      "code": 105,
+      "code": 104,
       "name": "WrongWinner",
       "msg": "Payout account is not the determined winner"
     }
   ],
   "metadata": {
-    "address": "ETkkKAj8RFWPYattkk7C8YtD4JEnY3wXH9veFxqgnoiW"
+    "address": "B6mEhdMuVAQfDbvM1CURt5sMdDfyfZv1uPQRsuNgYQ7e"
   }
 }

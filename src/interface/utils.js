@@ -14,7 +14,7 @@ function hashToDisplay(byteArray) {
     }).join('');
 }
 
-const STATE_CACHE_EXPIRY_TIME_MS = 10_000;
+const STATE_CACHE_EXPIRY_TIME_MS = 1_000;
 
 function isProgStateCacheValid() {
     const state = localStorage.getItem("progState");

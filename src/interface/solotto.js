@@ -6,7 +6,7 @@ import idl from "./solotto.json";
 
 const CLUSTER = "http://localhost:8899";
 const PROVIDER_URL = "https://www.sollet.io";
-const PROGRAM_ID = "Dsya8jEcxMCewR4emeUB6L1wD8rHWx76p6eAEdfE5Vpw"
+const PROGRAM_ID = "6cARHq7CYbnhyC811wiiVb4deNECobFtTdSB3dJSsgTA";
 
 async function connectWallet() {
     let wallet = new Wallet(PROVIDER_URL);
