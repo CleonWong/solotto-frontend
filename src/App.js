@@ -6,6 +6,7 @@ import PokerChipLogo from "./poker-chip.svg";
 import TitleDesc from "./titleDesc.js";
 import Content from "./content.js";
 import BuyButton from "./buyButton.js";
+import { setupConnection } from "./utils/prog.js";
 
 // ----------
 

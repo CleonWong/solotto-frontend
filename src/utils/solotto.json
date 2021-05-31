@@ -1,0 +1,198 @@
+{
+  "version": "0.0.0",
+  "name": "solotto",
+  "instructions": [],
+  "state": {
+    "struct": {
+      "name": "Pool",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "gameState",
+            "type": {
+              "defined": "GameState"
+            }
+          },
+          {
+            "name": "nPlayers",
+            "type": "u16"
+          },
+          {
+            "name": "commit",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "players",
+            "type": {
+              "array": [
+                "publicKey",
+                32
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "methods": [
+      {
+        "name": "new",
+        "accounts": [
+          {
+            "name": "authority",
+            "isMut": false,
+            "isSigner": true
+          }
+        ],
+        "args": []
+      },
+      {
+        "name": "startGame",
+        "accounts": [
+          {
+            "name": "authority",
+            "isMut": false,
+            "isSigner": true
+          }
+        ],
+        "args": [
+          {
+            "name": "commit",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "endGame",
+        "accounts": [
+          {
+            "name": "authority",
+            "isMut": false,
+            "isSigner": true
+          },
+          {
+            "name": "clock",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "seedGen",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "payout",
+        "accounts": [
+          {
+            "name": "authority",
+            "isMut": false,
+            "isSigner": true
+          },
+          {
+            "name": "state",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "winner",
+            "isMut": true,
+            "isSigner": false
+          }
+        ],
+        "args": []
+      },
+      {
+        "name": "buyTicket",
+        "accounts": [
+          {
+            "name": "buyer",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "state",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "systemProg",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": []
+      }
+    ]
+  },
+  "types": [
+    {
+      "name": "GameState",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Inactive"
+          },
+          {
+            "name": "Ongoing"
+          },
+          {
+            "name": "Completed"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 100,
+      "name": "NotEnoughPlayers",
+      "msg": "Not enough players in the pool"
+    },
+    {
+      "code": 101,
+      "name": "GameOngoing",
+      "msg": "Game already started"
+    },
+    {
+      "code": 102,
+      "name": "NoGameOngoing",
+      "msg": "No game ongoing"
+    },
+    {
+      "code": 103,
+      "name": "MaxPlayers",
+      "msg": "Max players reached"
+    },
+    {
+      "code": 104,
+      "name": "WrongWinningSeed",
+      "msg": "Winning seed is different from the one commited"
+    },
+    {
+      "code": 105,
+      "name": "WrongWinner",
+      "msg": "Payout account is not the determined winner"
+    }
+  ],
+  "metadata": {
+    "address": "7BhPB7nBTvPfTSi89sZA26B42oYimYzGsdMmYXF7qnmE"
+  }
+}
