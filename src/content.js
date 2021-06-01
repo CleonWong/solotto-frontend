@@ -74,7 +74,8 @@ class Content extends Component {
     // Commit hash:
     if (
       gameState.toLowerCase() === "inactive" ||
-      gameState.toLowerCase() === "unknown"
+      gameState.toLowerCase() === "unknown" ||
+      gameState.toLowerCase() === "completed"
     ) {
       var hash = "N/A";
     } else {
