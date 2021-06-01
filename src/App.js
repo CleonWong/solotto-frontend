@@ -17,6 +17,7 @@ class App extends Component {
   componentDidMount() {
     // forceUpdate() to rerender children with newly fetched game state
     fetchAndCacheProgState().then(() => this.forceUpdate());
+    // fetchAndCacheProgState().then(console.log);
   }
 
   render() {
